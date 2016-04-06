@@ -38,5 +38,10 @@
  */
 - (void)closeRightMenuView;
 
+/**
+ * add SwipeGesture
+ */
+- (void)addSwipeGesture;
+
 
 @end

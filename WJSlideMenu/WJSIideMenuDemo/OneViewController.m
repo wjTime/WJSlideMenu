@@ -45,6 +45,7 @@
     CGRect frame = self.view.bounds;
     WJSlideMenu *menu = [[WJSlideMenu alloc]initWithFrame:frame];
     menu.backgroundColor = [UIColor redColor];
+    [menu addSwipeGesture];// 添加左右滑动手势
     [self.view addSubview:menu];
     self.menu = menu;
     
@@ -74,7 +75,7 @@
     self.menu.navBgView.backgroundColor = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:0.8];
     self.menu.titleView.backgroundColor = [UIColor clearColor];
     self.menu.navRigthBtn.backgroundColor = [UIColor clearColor];
-    self.menu.mainView.backgroundColor = [UIColor lightGrayColor];
+    //self.menu.mainView.backgroundColor = [UIColor lightGrayColor];
     
     //  比如添加一个titleView的文字
     UILabel *titleLb = [[UILabel alloc]initWithFrame:self.menu.titleView.bounds];

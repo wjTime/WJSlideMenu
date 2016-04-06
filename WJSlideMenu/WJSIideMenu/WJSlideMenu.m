@@ -54,6 +54,8 @@
         // create navgaiton background view
         UIView *navBgView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, menuW, navH)];
         navBgView.backgroundColor = [UIColor whiteColor];
+        
+    
         [mainView addSubview:navBgView];
         self.navBgView = navBgView;
         
@@ -85,6 +87,34 @@
     return self;
 }
 
+- (void)addSwipeGesture{
+    // add Swipe GestureRecognizer
+    UISwipeGestureRecognizer *swipeGestureRecognizerLeft = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipes:)];
+    [swipeGestureRecognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    UISwipeGestureRecognizer *swipeGestureRecognizerRight = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipes:)];
+    [swipeGestureRecognizerRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.mainView addGestureRecognizer:swipeGestureRecognizerLeft];
+    [self.mainView addGestureRecognizer:swipeGestureRecognizerRight];
+}
+
+- (void)handleSwipes:(UISwipeGestureRecognizer *)sender{
+
+    
+    
+    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        if (self.navLeftBtn.selected) {
+            [self leftAndRightBtnClickEvent:self.navLeftBtn isLeft:YES push:NO];
+        }else{
+            [self leftAndRightBtnClickEvent:self.navRigthBtn isLeft:NO push:NO];
+        }
+    }else if (sender.direction == UISwipeGestureRecognizerDirectionRight){
+        if (self.navRigthBtn.selected) {
+            [self leftAndRightBtnClickEvent:self.navRigthBtn isLeft:NO push:NO];
+        }else{
+            [self leftAndRightBtnClickEvent:self.navLeftBtn isLeft:YES push:NO];
+        }
+    }
+}
 
 // left and right click animation
 - (void)leftAndRightBtnClickEvent:(UIButton *)btn isLeft:(BOOL)isLeft push:(BOOL)push{
