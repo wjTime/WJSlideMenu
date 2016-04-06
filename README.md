@@ -6,6 +6,7 @@ a easy slide menu
     CGRect frame = self.view.bounds;
     WJSlideMenu *menu = [[WJSlideMenu alloc]initWithFrame:frame];
     menu.backgroundColor = [UIColor redColor];
+    [menu addSwipeGesture];// 添加左右滑动手势
     [self.view addSubview:menu];
     self.menu = menu;
     
